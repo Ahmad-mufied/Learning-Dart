@@ -66,6 +66,17 @@ class B {
       'B(_private: $_private, a: $a, b: $b, c: $c, d: $d, e: $e, f: $f)';
 }
 
+class C {
+  C({required this.x, required this.y});
+  final int x;
+  final int y;
+
+  @override
+  String toString() {
+    return "C(x: $x, y: $y)";
+  }
+}
+
 void testClassA() {
   var a = A();
   var hashCode = a.hashCode;
@@ -112,6 +123,13 @@ void testClassB() {
   print('alfa --> $alfa');
 }
 
+void tesClassC() {
+  var beta = C(x: 1, y: 2);
+  print('beta --> $beta');
+}
+
 void main() {
-  testClassB();
+  // testClassA();
+  // testClassB();
+  tesClassC();
 }
