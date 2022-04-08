@@ -71,6 +71,10 @@ class C {
   final int x;
   final int y;
 
+  C.zero()
+      : x = 0,
+        y = 0;
+
   @override
   String toString() {
     return "C(x: $x, y: $y)";
@@ -125,7 +129,9 @@ void testClassB() {
 
 void tesClassC() {
   var beta = C(x: 1, y: 2);
+  var betaZero = C.zero();
   print('beta --> $beta');
+  print('alfaZero --> $betaZero');
 }
 
 void main() {
