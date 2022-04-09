@@ -80,6 +80,10 @@ class C {
       : x = json['x']!,
         y = json['y']!;
 
+  // Redirecting Constratctor
+  C.zeroX({required int y}) : this(x: 0, y: y);
+  C.zeroY({required int x}) : this(x: x, y: 0);
+
   @override
   String toString() {
     return "C(x: $x, y: $y)";
@@ -139,9 +143,13 @@ void tesClassC() {
     'x': 5,
     'y': 10,
   });
+  var betaZeroX = C.zeroX(y: 30);
+  var betaZeroY = C.zeroY(x: 30);
   print('beta --> $beta');
-  print('alfaZero --> $betaZero');
+  print('betaZero --> $betaZero');
   print('betaFromJson --> $betaFromJson');
+  print('betaZeorX --> $betaZeroX');
+  print('betaZeroY --> $betaZeroY');
 }
 
 void main() {
