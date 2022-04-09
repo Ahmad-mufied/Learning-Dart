@@ -122,10 +122,22 @@ class Point {
   }
 
   final int x;
+  //? int get x => x;
   final int y;
+  //? int get y => y;
+
+  // Aditional getter and setter
+  int get sum => x + y;
+  int get diff => x - y;
+
   static const Point origin = Point(x: 0, y: 0);
 
   String toString() => 'Point(x: $x, y: $y)';
+}
+
+class SetterCar {
+  late int age;
+  set manufacturedYear(int value) => age = 2021 - value;
 }
 
 void testClassA() {
@@ -202,6 +214,10 @@ void testPointClass() {
   ];
   print(
       'identical(listOfPoints[0], listOfPoints[1]) --> ${identical(listOfPoints[0], listOfPoints[1])}');
+  p1.sum;
+  print('p1.sum --> ${p1.sum}');
+  p1.diff;
+  print('p1.diff --> ${p1.diff}');
 }
 
 void testFactoryConstractor() {
@@ -214,10 +230,18 @@ void testFactoryConstractor() {
   print(origin);
 }
 
+void testSetterCar() {
+  var car = SetterCar();
+  car.manufacturedYear = 2006;
+  car.age;
+  print('car.age --> ${car.age}');
+}
+
 void main() {
   // testClassA();
   // testClassB();
   // tesClassC();
   // testPointClass();
-  testFactoryConstractor();
+  // testFactoryConstractor();
+  testSetterCar();
 }
