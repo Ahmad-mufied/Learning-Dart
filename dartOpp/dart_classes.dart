@@ -130,7 +130,22 @@ class Point {
   int get sum => x + y;
   int get diff => x - y;
 
+  // static field
   static const Point origin = Point(x: 0, y: 0);
+
+  // static method
+  static distanceBetween(Point p1, Point p2) {
+    var dx = p1.x - p2.x;
+    var dy = p1.y - p2.y;
+    return sqrt(pow(dx, 2) + pow(dy, 2));
+  }
+
+  // Instance method
+  num distanceTo(Point p1) {
+    var dx = x - p1.x;
+    var dy = y - p1.y;
+    return sqrt(pow(dx, 2) + pow(dy, 2));
+  }
 
   String toString() => 'Point(x: $x, y: $y)';
 }
@@ -218,6 +233,9 @@ void testPointClass() {
   print('p1.sum --> ${p1.sum}');
   p1.diff;
   print('p1.diff --> ${p1.diff}');
+
+  Point.distanceBetween(p1, p2);
+  print('Point.distanceBetween(p1, p2) --> ${Point.distanceBetween(p1, p2)}');
 }
 
 void testFactoryConstractor() {
@@ -241,7 +259,7 @@ void main() {
   // testClassA();
   // testClassB();
   // tesClassC();
-  // testPointClass();
+  testPointClass();
   // testFactoryConstractor();
-  testSetterCar();
+  // testSetterCar();
 }
