@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class A {
   @override
   String toString() {
@@ -97,9 +99,30 @@ class Point {
     required this.x,
     required this.y,
   });
+
+  // Factory Constractor
+  factory Point.random({required bool isPositive}) {
+    int minNegativeValue = -99;
+    int maxNegativeValue = -1;
+    int minPositiveValue = 0;
+    int maxPositveValue = 99;
+
+    int randomNegativeValue = minNegativeValue +
+        Random().nextInt(maxNegativeValue - minNegativeValue);
+    int randomPositiveValue =
+        minPositiveValue + Random().nextInt(maxPositveValue - minPositiveValue);
+
+    return isPositive
+        ? Point(x: randomPositiveValue, y: randomNegativeValue)
+        : Point(x: randomNegativeValue, y: randomNegativeValue);
+  }
+
+  factory Point.explanation() {
+    return origin;
+  }
+
   final int x;
   final int y;
-
   static const Point origin = Point(x: 0, y: 0);
 
   String toString() => 'Point(x: $x, y: $y)';
@@ -181,9 +204,20 @@ void testPointClass() {
       'identical(listOfPoints[0], listOfPoints[1]) --> ${identical(listOfPoints[0], listOfPoints[1])}');
 }
 
+void testFactoryConstractor() {
+  var randomNegative = Point.random(isPositive: false);
+  print('randomNegative --> ${randomNegative}');
+  var randomPositive = Point.random(isPositive: true);
+  print('randomPositive --> ${randomPositive}');
+
+  var origin = Point.explanation();
+  print(origin);
+}
+
 void main() {
   // testClassA();
   // testClassB();
   // tesClassC();
-  testPointClass();
+  // testPointClass();
+  testFactoryConstractor();
 }
