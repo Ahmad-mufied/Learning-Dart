@@ -71,9 +71,14 @@ class C {
   final int x;
   final int y;
 
+  // Multiple Constractor
   C.zero()
       : x = 0,
         y = 0;
+
+  C.fromJson({required Map<String, int> json})
+      : x = json['x']!,
+        y = json['y']!;
 
   @override
   String toString() {
@@ -130,8 +135,13 @@ void testClassB() {
 void tesClassC() {
   var beta = C(x: 1, y: 2);
   var betaZero = C.zero();
+  var betaFromJson = C.fromJson(json: {
+    'x': 5,
+    'y': 10,
+  });
   print('beta --> $beta');
   print('alfaZero --> $betaZero');
+  print('betaFromJson --> $betaFromJson');
 }
 
 void main() {
