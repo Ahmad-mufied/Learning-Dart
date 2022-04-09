@@ -90,6 +90,21 @@ class C {
   }
 }
 
+class Point {
+  // Use const constructors if you want to create objects that never change and are treated as compile time constants.
+  // A class can have constant constructor only if all of its members are final.
+  const Point({
+    required this.x,
+    required this.y,
+  });
+  final int x;
+  final int y;
+
+  static const Point origin = Point(x: 0, y: 0);
+
+  String toString() => 'Point(x: $x, y: $y)';
+}
+
 void testClassA() {
   var a = A();
   var hashCode = a.hashCode;
@@ -152,8 +167,23 @@ void tesClassC() {
   print('betaZeroY --> $betaZeroY');
 }
 
+void testPointClass() {
+  const p1 = Point(x: 1, y: 2);
+  const p2 = Point(x: 1, y: 2);
+  identical(p1, p2);
+  print('identical(p1, p2) --> ${identical(p1, p2)}');
+
+  const listOfPoints = [
+    Point(x: 1, y: 1),
+    Point(x: 1, y: 1),
+  ];
+  print(
+      'identical(listOfPoints[0], listOfPoints[1]) --> ${identical(listOfPoints[0], listOfPoints[1])}');
+}
+
 void main() {
   // testClassA();
   // testClassB();
-  tesClassC();
+  // tesClassC();
+  testPointClass();
 }
