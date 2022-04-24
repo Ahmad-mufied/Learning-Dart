@@ -130,7 +130,7 @@ class Point {
   int get sum => x + y;
   int get diff => x - y;
 
-  // static field
+  // static field 
   static const Point origin = Point(x: 0, y: 0);
 
   // static method
@@ -261,5 +261,5 @@ void main() {
   // tesClassC();
   testPointClass();
   // testFactoryConstractor();
-  // testSetterCar();
+  // testSetterCar(); 
 }
