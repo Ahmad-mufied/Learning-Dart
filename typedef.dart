@@ -1,5 +1,16 @@
 typedef ID = int;
 typedef Person = Map<String, dynamic>;
+typedef Send = void Function(String message);
+
+void sendTextMessage(String msg) {
+  //* Some stuf related to SMS logic
+  print(msg);
+}
+
+void sendEmail(String msg) {
+  //* Some stuf ralated to email client logic
+  print(msg);
+}
 
 void main() {
   // Using ID typedef
@@ -18,4 +29,11 @@ void main() {
   print(personOne);
 
   print(personTwo);
+
+  //* assign your typedef to any function matching the signatures.
+  Send sendMessage = sendTextMessage;
+  sendMessage("Hello! this is a text message");
+  //* You can also change the return type and reassign on the fly.
+  sendMessage = sendEmail;
+  sendMessage("Hello! this is an email");
 }
